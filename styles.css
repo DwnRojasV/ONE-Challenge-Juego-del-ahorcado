@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body{
+    height: 570px;
+    background: #A5C9CA;
+}
+header{
+    width: 100%;
+    height: calc((100%)/5);
+    margin: 0 auto 0 auto;
+
+}
+header img{
+    width: 70px;
+    position: relative;
+    top: 40px;
+    left: 40px; 
+}
+header h1{
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    vertical-align: top;
+    text-align: center;
+    color: #2C3333;
+
+}
+main{
+    width: auto;
+    height: 75%;
+    /* background-color: blueviolet; */
+}
+
+.iniciar-juego{
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: crimson; */
+}.iniciar-juego img{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20%;
+}
+#iniciar-juego{
+    background: #395B64;
+    margin-bottom: 15px;
+    width: 250px;
+    height: 100px;
+    border-color: #E7F6F2;
+    border-radius: 15px;
+    color: #E7F6F2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+}
+
+#nueva-palabra{
+    width: 250px;
+    height: 50px;
+    background-color: #E7F6F2;
+    border-color: #395B64;
+    border-radius: 12px;
+    color: #395B64;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    transition: 10ms;
+}
+#nueva-palabra:active{
+    box-shadow: -1px -1px 1px 0px rgba(44, 51, 51, 40%), inset -1px -1px 2px 1px #ffffff;;
+}
+.agregar-palabra{
+    display: none;
+}
+.jugar{
+    display: none;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #2C3333;
+
+}
+footer img{
+    width: 20px;
+    margin-left: 5px;
+}
