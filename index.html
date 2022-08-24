@@ -15,7 +15,7 @@
     </header>
     <main>
         <section class="iniciar-juego">
-            <button id="iniciar-juego">Iniciar Juego</button>
+            <button id="iniciar-juego" onclick="iniciarJuego()">Iniciar Juego</button>
             <button id="nueva-palabra">Agregar nueva palabra</button>
             <img src="./img/soga.png" alt="Imagen de una soga">
         </section>
@@ -26,12 +26,22 @@
                         <img src="./img/advertencia.svg" alt="simbolo de advertencia" >
                         <p>Máx. de 8 letras</p>
                     </div>
-                    <input id="guardar" type="button" value="Guardar y empezar" onclick="guardarPalabra()">
-                    <button id="cancelar" onclick="cancelar()">Cancelar</button>
+                    <input id="guardar" class="btn-ejecutar" type="button" value="Guardar y empezar" onclick="guardarPalabra()">
+                    <button id="cancelar" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
                 </div>
         </section>
         <section class="jugar">
-                seccion de juego
+                <canvas></canvas>
+                <div class="letras">
+                    <ul id="lista-letras">
+                    </ul>
+                    <p id="letras-incorrectas"></p>
+                </div>
+                <div>
+                    <button id="cancelar" class="btn-ejecutar" onclick="iniciarJuego()">Nuevo juego</button>
+                    <button id="cancelar" class="btn-cancelar" onclick="cancelar()">Salir</button>
+                </div>
+
         </section>
     </main>
     <footer>
