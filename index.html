@@ -20,7 +20,15 @@
             <img src="./img/soga.png" alt="Imagen de una soga">
         </section>
         <section class="agregar-palabra">
-                seccion de agregar palagras nuevas
+                <input id="ingresar-palabra" type="text" placeholder="Ingrese una palabra">
+                <div class="botones">
+                    <div class="advertencia">
+                        <img src="./img/advertencia.svg" alt="simbolo de advertencia" >
+                        <p>Máx. de 8 letras</p>
+                    </div>
+                    <input id="guardar" type="button" value="Guardar y empezar" onclick="guardarPalabra()">
+                    <button id="cancelar" onclick="cancelar()">Cancelar</button>
+                </div>
         </section>
         <section class="jugar">
                 seccion de juego
