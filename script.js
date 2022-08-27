@@ -8,7 +8,11 @@ const grosorLinea = 4;
 const desfase = grosorLinea/2;
 
 
-var listaPalabras = ["JAVA", "CSS", "MANZANA"];
+var listaPalabras = ["JAVA", "CSS", "MANZANA","NARANJA",
+    "MANGO","GATO","PERRO","VESTIDO","ZAPATOS","LORO",
+    "CELULAR","LAPIZ","MONO","CONEJO","MESA","AVION","PIÑA",
+    "CAMA","COCINA" ,"SILLA","CABALLO","ARBOL","FLOR",
+    "ESPEJO","CUCHARA","TREN" ,"KIWI"];
 var palabraElegida = "";
 var letrasIncorrectas = "";
 var aciertos = 0;
@@ -22,7 +26,8 @@ var anchoBaseAhorcado = 0;
 function nuevoJuego(){
     //logica para iniciar nuevo juego
     palabraElegida = elegirPalabra();
-    letrasIncorrectas = ""
+    letrasIncorrectas = "";
+    // pincel.clearRect(0,0,anchoPantalla,altoPantalla);
     jugar(palabraElegida);
 
 }
@@ -67,6 +72,8 @@ function removerCampos(){
 }
 function jugar(palabra){
     removerCampos();
+    borrarCanvas();
+    borrarParrafo()
     document.getElementById("iniciar-juego").style.display='none';  
     document.getElementById("agregar-palabra").style.display='none';  
     document.getElementById("jugar").style.display='flex';
@@ -111,6 +118,8 @@ function validar(letra){
         añadirAParrafo(letra);
         console.log(letrasIncorrectas.length)
         dibujarAhorcado(letrasIncorrectas);
+        perder();
+
     }
 }
 function añadirAParrafo(letra){
@@ -137,7 +146,11 @@ function ganar(){
         alert("Ganaste!");
     }
 }
-
+function perder(){
+    if(letrasIncorrectas.length == 9 ){
+        alert("Perdiste");
+    }
+}
 function crearPincel(){
     let pincel = pantalla.getContext('2d');
     return pincel;
@@ -223,4 +236,12 @@ function dibujarCirculo(xInicial,yInicial,radio){
     pincel.arc(xInicial, yInicial, radio, 0, 2*Math.PI)
     pincel.stroke();
     pincel.closePath();
+}
+function borrarCanvas(){
+    let pincel = crearPincel();
+    pincel.clearRect(0,0,anchoPantalla,altoPantalla);
+}
+function borrarParrafo(){
+    let seccionLetrasIncorrectas = document.getElementById("letras-incorrectas");
+    seccionLetrasIncorrectas.innerHTML = "";
 }
