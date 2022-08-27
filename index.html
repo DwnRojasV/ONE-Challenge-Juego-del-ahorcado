@@ -6,7 +6,6 @@
     <title>Juego del Ahorcado</title>
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./styles.css">
-    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -14,12 +13,12 @@
         <h1>Juego del ahorcado</h1>
     </header>
     <main>
-        <section class="iniciar-juego">
-            <button id="iniciar-juego" onclick="iniciarJuego()">Iniciar Juego</button>
-            <button id="nueva-palabra">Agregar nueva palabra</button>
+        <section id="iniciar-juego">
+            <button id="nuevo-juego" onclick="nuevoJuego()">Iniciar Juego</button>
+            <button id="nueva-palabra" onclick="nuevaPalabra()">Agregar nueva palabra</button>
             <img src="./img/soga.png" alt="Imagen de una soga">
         </section>
-        <section class="agregar-palabra">
+        <section id="agregar-palabra">
                 <input id="ingresar-palabra" type="text" placeholder="Ingrese una palabra">
                 <div class="botones">
                     <div class="advertencia">
@@ -30,15 +29,14 @@
                     <button id="cancelar" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
                 </div>
         </section>
-        <section class="jugar">
-                <canvas></canvas>
+        <section id="jugar">
+                <canvas id="lienzo"></canvas>
                 <div class="letras">
-                    <ul id="lista-letras">
-                    </ul>
+                    <ul id="lista-letras"></ul>
                     <p id="letras-incorrectas"></p>
                 </div>
                 <div>
-                    <button id="cancelar" class="btn-ejecutar" onclick="iniciarJuego()">Nuevo juego</button>
+                    <button id="cancelar" class="btn-ejecutar" onclick="nuevoJuego()">Nuevo juego</button>
                     <button id="cancelar" class="btn-cancelar" onclick="cancelar()">Salir</button>
                 </div>
 
@@ -49,5 +47,6 @@
         <a href="https://github.com/DwnRojasV" target="_blank" rel="noreferrer noopener"><img src="./img/logo-github.png" alt="logotipo de Github"></a>
         <a href="https://www.linkedin.com/in/dwnrojasv/" target="_blank" rel="noreferrer noopener"><img src="./img/logo-linkedin.png" alt="logotipo de LinkedIn"></a>
     </footer>
+    <script src="script.js"></script>  
 </body>
 </html>
