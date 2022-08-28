@@ -159,6 +159,16 @@ ul li{
 .letras P{
     font-size: 1.4em;
 }
+#resultado{
+    position: relative;
+    visibility: hidden;
+    top: -80%;
+    left: 65%;
+    width: 200px;
+    height: 131px;
+    font-size: 2em;
+    font-weight: bold;
+}
 
 footer{
     display: flex;

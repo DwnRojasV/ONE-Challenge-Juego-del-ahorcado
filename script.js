@@ -6,6 +6,7 @@ const inicioBase = (anchoPantalla-anchoBase)/2;
 const finBase = anchoPantalla-inicioBase;
 const grosorLinea = 4;
 const desfase = grosorLinea/2;
+const alphabet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 
 
 var listaPalabras = ["JAVA", "CSS", "MANZANA","NARANJA",
@@ -15,21 +16,15 @@ var listaPalabras = ["JAVA", "CSS", "MANZANA","NARANJA",
     "ESPEJO","CUCHARA","TREN" ,"KIWI"];
 var palabraElegida = "";
 var letrasIncorrectas = "";
-var aciertos = 0;
-var desaciertos = 0;
+var aciertos;
+var desaciertos;
 var anchoBaseAhorcado = 0;
-
-//dibujar canvas
-
-
+var mensajeResultado;
 
 function nuevoJuego(){
-    //logica para iniciar nuevo juego
     palabraElegida = elegirPalabra();
     letrasIncorrectas = "";
-    // pincel.clearRect(0,0,anchoPantalla,altoPantalla);
     jugar(palabraElegida);
-
 }
 function nuevaPalabra(){
     //logica para mostrar la seccion de nueva palabra
@@ -71,9 +66,13 @@ function removerCampos(){
     }
 }
 function jugar(palabra){
+    aciertos = 0;
+    desaciertos = 0;
+    mensajeResultado = "";
     removerCampos();
     borrarCanvas();
     borrarParrafo()
+    borrarResultado();
     document.getElementById("iniciar-juego").style.display='none';  
     document.getElementById("agregar-palabra").style.display='none';  
     document.getElementById("jugar").style.display='flex';
@@ -96,16 +95,18 @@ function guardarPalabra(){
     }
 
 }
-
 function popUp(){
     console.log("Error la palabra es muy larga");
     document.getElementById("ingresar-palabra").value = "";
 }
-
 function teclasPresionadas(){
     document.addEventListener("keyup", function(evento){
         let letra = evento.key.toUpperCase();
-        validar(letra);
+        if (alphabet.includes(letra) && 
+        (!(aciertos == palabraElegida.length) &&
+        !(desaciertos == 9))){
+            validar(letra);
+        }
     })
 }
 function validar(letra){
@@ -113,12 +114,12 @@ function validar(letra){
     console.log(flag)
     if(flag){
         añadirALista(letra);
-        ganar();
+        resultado(palabraElegida,aciertos,"Felicidades, ¡Ganaste!", "green");
     } else {
         añadirAParrafo(letra);
         console.log(letrasIncorrectas.length)
         dibujarAhorcado(letrasIncorrectas);
-        perder();
+        resultado(letrasIncorrectas,9,"Lo siento, ¡Perdiste!","red");
 
     }
 }
@@ -127,6 +128,7 @@ function añadirAParrafo(letra){
     if(!letrasIncorrectas.includes(letra)){
         letrasIncorrectas = letrasIncorrectas + letra;
         seccionLetrasIncorrectas.innerHTML = letrasIncorrectas;
+        desaciertos++
     }
 }
 function añadirALista(letra){
@@ -141,15 +143,15 @@ function añadirALista(letra){
         }
     }
 }
-function ganar(){
-    if(palabraElegida.length == aciertos){
-        alert("Ganaste!");
+function resultado(textoCondicion, condicion, mensajeCondicion, color ){
+    let divMensaje = document.getElementById("resultado");
+    let mensaje = document.getElementById('mensaje');
+    if(textoCondicion.length == condicion){
+        mensajeResultado = mensajeCondicion
+        divMensaje.style.visibility = "visible";
+        divMensaje.style.color = color;
     }
-}
-function perder(){
-    if(letrasIncorrectas.length == 9 ){
-        alert("Perdiste");
-    }
+    mensaje.innerHTML = mensajeResultado;
 }
 function crearPincel(){
     let pincel = pantalla.getContext('2d');
@@ -244,4 +246,10 @@ function borrarCanvas(){
 function borrarParrafo(){
     let seccionLetrasIncorrectas = document.getElementById("letras-incorrectas");
     seccionLetrasIncorrectas.innerHTML = "";
+}
+function borrarResultado(){
+    let divMensaje = document.getElementById("resultado");
+    let mensaje = document.getElementById('mensaje');
+    divMensaje.style.visibility = "hidden";
+    mensaje.innerHTML = mensajeResultado;
 }
